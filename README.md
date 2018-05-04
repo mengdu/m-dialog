@@ -3,9 +3,11 @@
 
 Dialog 模态框组件
 
-例子：[Example](https://mengdu.github.io/m-dialog/example/)
+例子：[Example](https://mengdu.github.io/m-dialog/example/index.html)
 
 打包工具： [vue-component-devtool](https://github.com/mengdu/vue-component-devtool)
+
+> 参考代码：[el-dialog](http://element.eleme.io/#/zh-CN/component/dialog)
 
 ## use
 
