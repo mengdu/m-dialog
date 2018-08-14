@@ -13,9 +13,11 @@
   </transition>
 </template>
 <script>
+import popup from './popup'
 import props from './props'
 export default {
   name: 'MDialog',
+  mixins: [popup],
   props,
   computed: {
     style () {
@@ -80,7 +82,7 @@ export default {
     }
   },
   mounted () {
-    this.mountModal()
+    // this.mountModal()
     this.setBodyOverflow()
     window.addEventListener('keydown', this.handleEscKey)
   },
