@@ -88,3 +88,40 @@
     opacity:0;
   }
 }
+
+.m-popup-wrapper {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  overflow: auto;
+  margin: 0;
+  background: rgba(0,0,0,0.5);
+  z-index: 10000;
+}
+
+.popup-fade-enter-active{
+  animation: popup-fade-in 0.3s;
+}
+.popup-fade-leave-active{
+  animation: popup-fade-out 0.3s;
+}
+
+@keyframes popup-fade-in{
+  0%{
+    opacity:0;
+  }
+  100%{
+    opacity:1;
+  }
+}
+
+@keyframes popup-fade-out{
+  0%{
+    opacity:1;
+  }
+  100%{
+    opacity:0;
+  }
+}
