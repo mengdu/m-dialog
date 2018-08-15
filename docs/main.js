@@ -5,7 +5,7 @@ import App from './App'
 import DemoBlock from './components/demo-block'
 import Component from '@/index'
 import MButton from 'vue-m-button'
-import 'vue-m-button/dist/css/default.css'
+import './assets/common.css'
 
 Vue.use(Component)
 Vue.use(MButton)
@@ -13,10 +13,11 @@ Vue.use(MButton)
 Vue.component('DemoBlock', DemoBlock)
 Vue.config.productionTip = false
 
-
 /* eslint-disable no-new */
-new Vue({
+const app = new Vue({
   el: '#app',
   components: { App },
   template: '<App/>'
 })
+
+window.app = app

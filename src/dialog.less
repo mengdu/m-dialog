@@ -9,8 +9,21 @@
     left: 0;
     overflow: auto;
     margin: 0;
-    background: rgba(0,0,0,0.5);
-    z-index: 10000;
+    z-index: 20000;
+  }
+  &__auto {
+    text-align: center;
+    .@{dialog-name} {
+      display: inline-block;
+      text-align: left;
+      width: auto;
+    }
+  }
+  &__top {
+    z-index: 25000;
+  }
+  &__bottom {
+    z-index: 5000;
   }
   width: 30%;
   margin: 0px auto 50px;
@@ -34,6 +47,7 @@
   & &__title{
     font-size: 18px;
     color: #2c3e50;
+    margin-right: 25px;
   }
   & &__close{
     font-weight: 100;

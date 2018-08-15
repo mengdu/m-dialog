@@ -1,0 +1,129 @@
+.m-dialog {
+  width: 30%;
+  margin: 0px auto 50px;
+  margin-top: 15vh;
+  position: relative;
+  box-shadow: rgba(0, 0, 0, 0.3) 0px 1px 3px;
+  box-sizing: border-box;
+  border-radius: 2px;
+  background: #fff;
+}
+.m-dialog__wrapper {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  overflow: auto;
+  margin: 0;
+  z-index: 20000;
+}
+.m-dialog__auto {
+  text-align: center;
+}
+.m-dialog__auto .m-dialog {
+  display: inline-block;
+  text-align: left;
+  width: auto;
+}
+.m-dialog__top {
+  z-index: 25000;
+}
+.m-dialog__bottom {
+  z-index: 5000;
+}
+.m-dialog .m-dialog__header,
+.m-dialog .m-dialog__body,
+.m-dialog .m-dialog__footer {
+  padding: 15px;
+  box-sizing: border-box;
+}
+.m-dialog .m-dialog__header {
+  padding-bottom: 10px;
+}
+.m-dialog .m-dialog__title {
+  font-size: 18px;
+  color: #2c3e50;
+  margin-right: 25px;
+}
+.m-dialog .m-dialog__close {
+  font-weight: 100;
+  font-size: 20px;
+  color: #909399;
+  position: absolute;
+  top: 11px;
+  right: 15px;
+  padding: 0;
+  background: 0 0;
+  border: none;
+  outline: 0;
+  cursor: pointer;
+}
+.m-dialog .m-dialog__close:hover {
+  color: #ef4848;
+}
+.m-dialog .m-dialog__footer:before,
+.m-dialog .m-dialog__footer:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+.dialog-fade-enter-active {
+  animation: dialog-fade-in 0.3s;
+}
+.dialog-fade-leave-active {
+  animation: dialog-fade-out 0.3s;
+}
+@keyframes dialog-fade-in {
+  0% {
+    transform: translate3d(0, -20px, 0);
+    opacity: 0;
+  }
+  100% {
+    transform: translate3d(0, 0, 0);
+    opacity: 1;
+  }
+}
+@keyframes dialog-fade-out {
+  0% {
+    transform: translate3d(0, 0, 0);
+    opacity: 1;
+  }
+  100% {
+    transform: translate3d(0, -20px, 0);
+    opacity: 0;
+  }
+}
+.m-popup-wrapper {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  overflow: auto;
+  margin: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 10000;
+}
+.popup-fade-enter-active {
+  animation: popup-fade-in 0.3s;
+}
+.popup-fade-leave-active {
+  animation: popup-fade-out 0.3s;
+}
+@keyframes popup-fade-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes popup-fade-out {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}

@@ -1,5 +1,6 @@
 export default {
   width: String,
+  autoWidth: Boolean,
   top: String,
   show: Boolean,
   title: String,
