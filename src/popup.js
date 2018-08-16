@@ -15,7 +15,7 @@ export default {
         this.$emit('open')
         Popup.show = true
       } else {
-        this.$emit('close')
+        this.$emit('close', this.closeType)
         this.close(true)
       }
       // 处理堆叠问题
@@ -62,6 +62,7 @@ export default {
       Popup.escKeyDown = function () {
         if (zIndexStack[zIndexStack.length - 1]) {
           zIndexStack[zIndexStack.length - 1].closeOnPressEscape && zIndexStack[zIndexStack.length - 1].close()
+          zIndexStack[zIndexStack.length - 1].closeType = 'esc'
         }
       }
       window.popup = Popup

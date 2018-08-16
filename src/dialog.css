@@ -32,6 +32,14 @@
 .m-dialog__bottom {
   z-index: 5000;
 }
+.m-dialog__middle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.m-dialog__middle .m-dialog {
+  margin: 0 !important;
+}
 .m-dialog .m-dialog__header,
 .m-dialog .m-dialog__body,
 .m-dialog .m-dialog__footer {

@@ -18,5 +18,7 @@ export default {
     type: Boolean,
     default: true
   },
-  beforeClose: Function
+  beforeClose: Function,
+  isMiddle: Boolean,
+  marginTop: String
 }

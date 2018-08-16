@@ -25,6 +25,16 @@
   &__bottom {
     z-index: 5000;
   }
+  &__middle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    & .@{dialog-name}{
+      // transform: translateY(-50%);
+      // top: 50%;
+      margin: 0 !important;
+    }
+  }
   width: 30%;
   margin: 0px auto 50px;
   margin-top: 15vh;

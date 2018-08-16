@@ -31,6 +31,8 @@
         @open="onOpen"
         @close="onClose"
         width="300px"
+        :is-middle="isMiddle"
+        margin-top="5vh"
         >
         <span>这里是正文内容...</span>
         <div slot="footer">
@@ -44,10 +46,12 @@
       
       <m-button @click="show = !show" type="info">modal</m-button>
       <m-button @click="show2 = !show2" type="info">modal2</m-button>
-      <m-button @click="$alert('Alert 消息框')">alert</m-button>
+      <m-button @click="handleAlert1">alert</m-button>
+      <m-button @click="handleConfirm1">confirm</m-button>
       <p>
         <label><input type="checkbox" v-model="appendToBody">append-to-body</label>
         <label><input type="checkbox" v-model="noHead">no-head </label>
+        <label><input type="checkbox" v-model="isMiddle">is-middle</label>
         <label><input type="checkbox" v-model="closeOnClickModal">close-on-click-modal </label>
         <label><input type="checkbox" v-model="closeOnPressEscape">close-on-press-escape </label>
       </p>
@@ -79,7 +83,8 @@ export default {
       appendToBody: false,
       noHead: false,
       closeOnClickModal: true,
-      closeOnPressEscape: true
+      closeOnPressEscape: true,
+      isMiddle: false
     }
   },
   methods: {
@@ -90,8 +95,24 @@ export default {
     onOpen () {
       console.log('open')
     },
-    onClose () {
-      console.log('close')
+    onClose (type) {
+      console.log('close', type)
+    },
+    handleAlert1 () {
+      this.$alert('Alert 消息框', {
+        callback (type) {
+          console.log('alert cb')
+        }
+      })
+    },
+    handleConfirm1 () {
+      this.$confirm('你确定要删除么？', {
+        title: '警告'
+      }).then(() => {
+        console.log('confirm')
+      }).catch(() => {
+        console.log('cancel')
+      })
     }
   },
   computed: {

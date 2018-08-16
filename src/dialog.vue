@@ -4,7 +4,8 @@
     :class="{
       'm-dialog__top': isCurrent,
       'm-dialog__bottom': !isCurrent,
-      'm-dialog__auto': autoWidth
+      'm-dialog__auto': autoWidth,
+      'm-dialog__middle': isMiddle
     }"
     v-if="show" @click.stop="handleClose('modal')">
     <div class="m-dialog" @click.stop :style="style">
@@ -27,7 +28,8 @@ export default {
   props,
   data () {
     return {
-      isCurrent: false
+      isCurrent: false,
+      closeType: 'user'
     }
   },
   computed: {
@@ -39,12 +41,16 @@ export default {
       if (this.top) {
         css.top = this.top
       }
+      if (this.marginTop) {
+        css.marginTop = this.marginTop
+      }
       return css
     }
   },
   methods: {
     handleClose (type) {
       if (type === 'modal' && !this.closeOnClickModal) return false
+      this.closeType = type
       if (typeof this.beforeClose === 'function') {
         this.beforeClose(this.close)
       } else {
