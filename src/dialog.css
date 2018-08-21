@@ -45,6 +45,7 @@
 .m-dialog .m-dialog__footer {
   padding: 15px;
   box-sizing: border-box;
+  word-break: break-word;
 }
 .m-dialog .m-dialog__header {
   padding-bottom: 10px;

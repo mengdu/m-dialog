@@ -5,13 +5,16 @@
     :width="width"
     :append-to-body="true"
     :show-close="showClose"
-    :close-on-click-modal="closeOnClickModal"
-    :close-on-press-escape='closeOnPressEscape'
+    :close-on-click-modal="true"
+    :close-on-press-escape='true'
+    :before-close="handleBeforeClose"
     :is-middle="isMiddle"
     @close="handleClose"
     ref="dialog"
     class="m-message-box"
-    >{{message}}
+    >
+    <!-- <img :src="infoImg" alt="info" class="m-message-box-type-img" /> -->
+    <p>{{message}}</p>
     <div slot="footer"
       :class="{'text-center': controlButtonCenter}"
       >
@@ -23,6 +26,7 @@
 <script>
 import MDialog from './dialog'
 import MbButton from './button'
+// import infoImg from './assets/info.svg'
 
 export default {
   components: {
@@ -47,6 +51,7 @@ export default {
       hasCancelButton: false,
       supperHTMLString: false,
       callback: null
+      // infoImg
     }
   },
   methods: {
@@ -62,6 +67,15 @@ export default {
     },
     handleCancel () {
       this.show = false
+    },
+    handleBeforeClose (type, done) {
+      console.log(type)
+      if (type === 'modal' && this.closeOnClickModal) {
+        done(true)
+      }
+      // if (type === 'esc' && this.closeOnPressEscape) {
+      //   done(true)
+      // }
     }
   }
 }
@@ -70,5 +84,10 @@ export default {
   .m-message-box .m-dialog__footer{
     padding-top: 0;
     text-align: right;
+  }
+  .m-message-box .m-message-box-type-img {
+    width: 30px;
+    height: 30px;
+    vertical-align: middle;
   }
 </style>

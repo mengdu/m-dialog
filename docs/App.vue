@@ -88,8 +88,8 @@ export default {
     }
   },
   methods: {
-    close (done) {
-      console.log('before-close')
+    close (type, done) {
+      console.log('before-close:', type)
       done()
     },
     onOpen () {

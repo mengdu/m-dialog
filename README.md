@@ -76,5 +76,5 @@ Vue.use(MDialog)
 
 | 事件名称      | 说明    | 回调参数      |
 |---------- |-------- |---------- |
-| close  | Dialog 关闭的回调 | — |
+| close  | Dialog 关闭后回调，返回关闭触发类型 | closeType 值为 'user', 'esc', 'button', 'modal'|
 | open  | Dialog 打开的回调 | — |
