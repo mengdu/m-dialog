@@ -60,9 +60,16 @@ export default {
         el: document.createElement('div')
       })
       Popup.escKeyDown = function () {
-        if (zIndexStack[zIndexStack.length - 1]) {
-          zIndexStack[zIndexStack.length - 1].closeOnPressEscape && zIndexStack[zIndexStack.length - 1].close()
-          zIndexStack[zIndexStack.length - 1].closeType = 'esc'
+        const current = zIndexStack[zIndexStack.length - 1]
+        if (current) {
+          current.closeType = 'esc'
+          if (current.closeOnPressEscape) {
+            if (typeof current.beforeClose === 'function') {
+              current.beforeClose(current.closeType, current.close)
+            } else {
+              current.close(false)
+            }
+          }
         }
       }
       window.popup = Popup

@@ -60,7 +60,7 @@ export default {
       if (type === 'modal' && !this.closeOnClickModal) return false
       this.closeType = type
       if (typeof this.beforeClose === 'function') {
-        this.beforeClose(this.close)
+        this.beforeClose(this.closeType, this.close)
       } else {
         this.close(false)
       }
