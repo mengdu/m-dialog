@@ -47,6 +47,14 @@ export default {
       return css
     }
   },
+  watch: {
+    show (val) {
+      if (val) {
+        // 每次显示时重置当前类型为user，用户更新状态
+        this.closeType = 'user'
+      }
+    }
+  },
   methods: {
     handleClose (type) {
       if (type === 'modal' && !this.closeOnClickModal) return false
