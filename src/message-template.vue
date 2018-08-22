@@ -57,25 +57,32 @@ export default {
   methods: {
     handleClose (type) {
       this.callback && this.callback(type)
-      this.$emit('close', type)
+      this.$emit('close', type, this.clickButton)
       setTimeout(() => {
         this.$refs['dialog'].$destroy()
       }, 3000)
     },
     handleConfrim () {
       this.show = false
+      this.clickButton = 'confrim'
     },
     handleCancel () {
       this.show = false
+      this.clickButton = 'cancel'
     },
     handleBeforeClose (type, done) {
-      console.log(type)
       if (type === 'modal' && this.closeOnClickModal) {
         done(true)
       }
-      // if (type === 'esc' && this.closeOnPressEscape) {
-      //   done(true)
-      // }
+      if (type === 'esc' && this.closeOnPressEscape) {
+        done(true)
+      }
+      if (type === 'button') {
+        done(true)
+      }
+    },
+    created () {
+      this.clickButton = 'cancel'
     }
   }
 }
@@ -89,5 +96,8 @@ export default {
     width: 30px;
     height: 30px;
     vertical-align: middle;
+  }
+  .m-message-box .m-dialog__body p{
+    margin: 0;
   }
 </style>
