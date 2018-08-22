@@ -56,19 +56,23 @@ Vue.use(MDialog)
 | show      | 是否显示 Dialog，支持 .sync 修饰符 | boolean | — | false |
 | title     | Dialog 的标题，也可通过具名 slot （见下表）传入 | string    | — | — |
 | width     | Dialog 的宽度 | string    | — | 50% |
+| auto-width     | 自动宽度 | boolean    | true/false | false |
 | top       | Dialog CSS 中的 margin-top 值 | string | — | 15vh |
 | append-to-body     | Dialog 自身是否插入至 body 元素上。嵌套的 Dialog 必须指定该属性并赋值为 true   | boolean   | — | false |
 | close-on-click-modal | 是否可以通过点击 modal 关闭 Dialog | boolean    | — | true |
 | close-on-press-escape | 是否可以通过按下 ESC 关闭 Dialog | boolean    | — | true |
 | show-close | 是否显示关闭按钮 | boolean    | — | true |
-| before-close | 关闭前的回调，会暂停 Dialog 的关闭 | function(done)，done 用于关闭 Dialog | — | — |
-| no-head | 去掉标题部分 | boolean | — | false |
+| before-close | 关闭前的回调，会暂停 Dialog 的关闭 | closeType, done；done 用于关闭 Dialog；closeType 值为： 'modal', 'esc', 'button' | — | — |
+| no-head | 去掉标题部分 | boolean | true/false | false |
+| is-middle | 是否居中 | boolean | true/false | false |
+| margin-top | 距离顶部 | string | — | — |
+
 
 ### Slot
 
 | name | 说明 |
 |------|--------|
-| — | Dialog 的内容 |
+| - | Dialog 的内容 |
 | title | Dialog 标题区的内容 |
 | footer | Dialog 按钮操作区的内容 |
 
