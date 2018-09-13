@@ -1,167 +1,165 @@
-<!-- <m-button @click="handleClick" >button</m-button> -->
+<div id="example"></div>
 <script>
   export default {
+    data () {
+      return {
+        show1: false
+      }
+    },
     methods: {
-      handleClick() {
-        alert('button click');
+      handleAlert1 () {
+        this.$alert('这是一个条提示消息', {
+          typeIcon: 'info'
+        })
+      },
+      handleAlert2 () {
+        this.$alert('这是一个警告信息!', {
+          title: '警告',
+          typeIcon: 'warning',
+          confirmButtonType: 'warning',
+          confromButtonText: '确定'
+        })
+      },
+      handleAlert3 () {
+        for (let i = 0; i < 5; i++) {
+          this.$alert(`这是第${i + 1}条提示消息`)
+        }
+      },
+      handleConfirm1 () {
+        this.$confirm('这是一条提示信息').then(() => {
+          alert('确认了操作')
+        }).catch(() => {
+          alert('取消了操作')
+        })
+      },
+      handleConfirm2 () {
+        this.$confirm('你确定删除吗？', {
+          typeIcon: 'danger',
+          confirmButtonType: 'danger'
+        }).then(() => {
+          // alert('确认了操作')
+        }).catch(() => {
+          // alert('取消了操作')
+        })
+      },
+      handleConfirm3 () {
+        this.$confirm('你确定删除ID为：<strong>1001</strong> 的数据吗？', {
+          typeIcon: 'danger',
+          confirmButtonType: 'danger',
+          supperHTMLString: true
+        })
       }
     }
   }
 </script>
 
 
-## Button 按钮
+## MDialog 弹框组件
 
-定义了平时常用的按钮主题类型。
+创建一个简单的弹框的组件
 
-## Button 支持5种主题类型
-
-:::demo 通过设置 `type` 属性来改变按钮主题；type可选值：`info`，`primary`，`warning`，`danger`，`success`。
+:::demo 通过 `m-dialog` 组件，可以快速创建对话框，`show` 属性控制显示与关闭
 
 ```html
-<m-button>Default</m-button>
-<m-button type="info">Info</m-button>
-<m-button type="primary">Primary</m-button>
-<m-button type="warning">Warning</m-button>
-<m-button type="danger">Danger</m-button>
-<m-button type="success">Success</m-button>
+<m-dialog :show.sync="show1" title="对话框">
+  <p>这是一段信息</p>
+  <div slot="footer">
+    <m-button @click="show1 = false">关闭</m-button>
+  </div>
+</m-dialog>
+<m-button @click="show1 = true">开启弹窗</m-button>
+<script>
+  export default {
+    data () {
+      return {
+        show1: false
+      }
+    }
+  }
+</script>
 ```
 
 :::
 
-## Plain 朴素按钮
+## Alert 消息框
 
-:::demo 添加 `plain` 属性。
+提示消息
 
-```html
-<m-button plain>Default</m-button>
-<m-button type="info" plain>Info</m-button>
-<m-button type="primary" plain>Primary</m-button>
-<m-button type="warning" plain>Warning</m-button>
-<m-button type="danger" plain>Danger</m-button>
-<m-button type="success" plain>Success</m-button>
-```
-:::
-
-## Round 椭圆椭圆
-
-:::demo 添加 `round` 属性
+:::demo 
 
 ```html
-<m-button round>Default</m-button>
-<m-button type="info" round>Info</m-button>
-<m-button type="primary" round>Primary</m-button>
-<m-button type="warning" round>Warning</m-button>
-<m-button type="danger" round>Danger</m-button>
-<m-button type="success" round>Success</m-button>
-```
-
-:::
-
-## Disabled 效果
-
-:::demo 添加 `disabled` 属性
-
-```html
-<m-button disabled>Default</m-button>
-<m-button type="info" disabled>Info</m-button>
-<m-button type="primary" disabled>Primary</m-button>
-<m-button type="warning" disabled>Warning</m-button>
-<m-button type="danger" disabled>Danger</m-button>
-<m-button type="success" disabled>Success</m-button>
-```
-
-:::
-
-## Active 效果
-
-:::demo 添加 `active` 属性
-
-```html
-<m-button active>Default</m-button>
-<m-button type="info" active>Info</m-button>
-<m-button type="primary" active>Primary</m-button>
-<m-button type="warning" active>Warning</m-button>
-<m-button type="danger" active>Danger</m-button>
-<m-button type="success" active>Success</m-button>
+<m-button @click="handleAlert1" type="info">消息框</m-button>
+<m-button @click="handleAlert2" type="warning">警告消息</m-button>
+<m-button @click="handleAlert3" >并发多个消息</m-button>
+<script>
+  export default {
+    methods: {
+      handleAlert1 () {
+        this.$alert('这是一个条提示消息', {
+          typeIcon: 'info'
+        })
+      },
+      handleAlert2 () {
+        this.$alert('这是一个警告信息!', {
+          title: '警告',
+          typeIcon: 'warning',
+          confirmButtonType: 'warning',
+          confromButtonText: '确定'
+        })
+      },
+      handleAlert3 () {
+        for (let i = 0; i < 5; i++) {
+          this.$alert(`这是第${i + 1}条提示消息`)
+        }
+      }
+    }
+  }
+</script>
 ```
 
 :::
 
 
-## Size 按钮尺寸
+## Confirm 对话框
 
-:::demo 添加 `size` 属性，可选值：`max`，`large`，`默认`，`small`，`mini`。
+对话框
+
+:::demo 
 
 ```html
-<p>
-  <m-button size="max">max</m-button>
-  <m-button type="info" size="max">max</m-button>
-  <m-button type="info" size="max" plain>max</m-button>
-  <m-button type="info" size="max" round>max</m-button>
-  <m-button type="info" size="max" round plain>Max按钮</m-button> 
-</p>
-
-
-<p>
-<m-button size="large">large</m-button>
-<m-button size="large" type="success">large</m-button>
-<m-button size="large" type="success" plain>large</m-button>
-<m-button size="large" type="success" round>large</m-button>
-<m-button size="large" type="success" round plain>large</m-button>
-</p>
-
-<p>
-<m-button size="mini">mini</m-button>
-<m-button size="mini" type="info">信息</m-button>
-<m-button size="mini" type="success">更新</m-button>
-<m-button size="mini" type="warning">禁用</m-button>
-<m-button size="mini" type="danger">删除</m-button>
-</p>
-
+<m-button @click="handleConfirm1" type="info">对话框1</m-button>
+<m-button @click="handleConfirm2" type="danger">对话框2</m-button>
+<m-button @click="handleConfirm3" type="primary">对话框3</m-button>
+<script>
+  export default {
+    methods: {
+      handleConfirm1 () {
+        this.$confirm('这是一条提示信息').then(() => {
+          alert('确认了操作')
+        }).catch(() => {
+          alert('取消了操作')
+        })
+      },
+      handleConfirm2 () {
+        this.$confirm('你确定删除吗？', {
+          typeIcon: 'danger',
+          confirmButtonType: 'danger'
+        }).then(() => {
+          // alert('确认了操作')
+        }).catch(() => {
+          // alert('取消了操作')
+        })
+      },
+      handleConfirm3 () {
+        this.$confirm('你确定删除ID为：<strong>1001</strong> 的数据吗？', {
+          typeIcon: 'danger',
+          confirmButtonType: 'danger',
+          supperHTMLString: true
+        })
+      }
+    }
+  }
+</script>
 ```
 
 :::
- 
-## Group 按钮组
-
-:::demo 通过 `m-button-group` 组件包裹 `m-button` 组件即可放在一个组里。
-
-```html
-<p>
-<m-button-group>
-  <m-button type="info">首页</m-button>
-  <m-button type="info">热门</m-button>
-  <m-button type="info">专栏</m-button>
-</m-button-group> 
-</p>
-
-<p>
-<m-button-group>
-  <m-button>首页</m-button>
-  <m-button>热门</m-button>
-  <m-button>专栏</m-button>
-</m-button-group>  
-</p>
-
-<p>
-<m-button-group>
-  <m-button type="info">Info</m-button>
-  <m-button type="primary">Primary</m-button>
-  <m-button type="warning">Warning</m-button>
-  <m-button type="danger">Danger</m-button>
-</m-button-group>  
-</p>
-
-```
-:::
-
-## Block 块类型按钮
-
-:::demo 设置 `block` 属性。
-
-```html
-<m-button block>Default</m-button>
-<m-button type="info" block>Info</m-button>
-```
-::: 

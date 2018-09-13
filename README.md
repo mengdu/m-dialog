@@ -1,9 +1,9 @@
 
 ## Dialog
 
-Dialog 模态框组件
+Vue 的 Dialog 模态框组件，包含了alert和confirm对话框。
 
-例子：[Example](https://mengdu.github.io/m-dialog/example/index.html)
+[Live Demo](https://mengdu.github.io/m-dialog/example/index.html)
 
 打包工具： [vue-component-devtool](https://github.com/mengdu/vue-component-devtool)
 
@@ -18,11 +18,20 @@ npm install vue-m-dialog
 
 ```js
 import MDialog from 'vue-m-dialog'
-import 'vue-m-dialog/dist/css/default.css'
 
-Vue.use(MDialog)
+Vue.use(MDialog) // 将挂载 m-dialog组件和 Vue.prototype.$alert 和 Vue.prototype.$confirm
 ```
 
+如果 `Vue.prototype.$alert` 和 `Vue.prototype.$confirm` 方法冲突，通过配置：
+
+```js
+Vue.use(MDialog, {
+  dialogName: 'm-dialog',
+  alertName: 'msg',
+  confirmName: 'dialog'
+})
+
+```
 
 ```html
 <m-dialog 

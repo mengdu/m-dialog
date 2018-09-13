@@ -3,17 +3,16 @@
     <fork-link :repo="repo" />
     <header>
       <img src="./assets/logo.png">
-      <h1 style="font-weight: 100">m-dialog 模态框组件</h1>
+      <h1 style="font-weight: 100">m-dialog 弹框组件</h1>
       <div style="margin-bottom: 50px;">
         <a :href="repo" target="_blank"><m-button type="info" size="large" round>Github</m-button></a>
         &nbsp;
-        <a href="#events"><m-button type="warning" size="large" plain round>Example</m-button></a>
+        <a href="#example"><m-button type="warning" size="large" plain round>Example</m-button></a>
       </div>
     </header>
     <main class="doc-block">
       <readme />
-      <!-- <Doc/> -->
-      <m-dialog
+      <!-- <m-dialog
         title="This is info message !"
         :show.sync="show2"
         auto-width
@@ -54,7 +53,10 @@
         <label><input type="checkbox" v-model="isMiddle">is-middle</label>
         <label><input type="checkbox" v-model="closeOnClickModal">close-on-click-modal </label>
         <label><input type="checkbox" v-model="closeOnPressEscape">close-on-press-escape </label>
-      </p>
+      </p> -->
+    </main>
+    <main class="doc-block">
+      <doc />
     </main>
     <layout-footer></layout-footer>
   </div>
@@ -64,13 +66,13 @@
 import LayoutFooter from './components/footer'
 import ForkLink from './components/fork-link'
 import Readme from '~/README.md'
-// import Doc from './doc.md'
+import Doc from './doc.md'
 import pkg from '~/package.json'
 
 export default {
   name: 'App',
   components: {
-    // Doc,
+    Doc,
     Readme,
     LayoutFooter,
     ForkLink
