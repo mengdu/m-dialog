@@ -82,3 +82,41 @@ Vue.use(MDialog)
 |---------- |-------- |---------- |
 | close  | Dialog 关闭后回调，返回关闭触发类型 | closeType 值为 'user', 'esc', 'button', 'modal'|
 | open  | Dialog 打开的回调 | — |
+
+
+### Alert 提示框
+
+`alert` 是一个提示窗
+
+**alert(msg[, options])** 提示一条信息，并发多次调用会列队
+
+  + **msg** `string` 必须，消息内容
+  + **options** `object` 可选，配置对象
+
+### Confirm 对话框
+
+**confrim(msg[, options])** 对话框，并发多次调用会列队；返回 `Promise` 对象；确认会resolve，取消会reject
+
+  + **msg** `string` 必须，消息内容
+  + **options** `object` 可选，配置对象
+
+
+
+**options** 配置对象如下:
+
+| 参数      | 说明          | 类型      | 可选值                           | 默认值  |
+|---------- |-------------- |---------- |--------------------------------  |-------- |
+| options.title | 显示标题 | string | — | '提示' |
+| options.width | 提示框宽度 | string | — | '300px' |
+| options.typeIcon | 提示图标 | string | 图片url,info,warning,danger,success | '300px' |
+| options.showClose | 是否显示关闭按钮 | boolean | true/false | true |
+| options.isMiddle | 是否居中 | boolean | true/false | true |
+| options.closeOnClickModal | 点击遮罩层是否关闭 | boolean | true/false | true |
+| options.closeOnPressEscape | 按下esc按钮是否关闭 | boolean | true/false | false |
+| options.closeOnPressEscape | 按下esc按钮是否关闭 | boolean | true/false | false |
+| options.controlButtonCenter | 控制按钮是否居中 | boolean | true/false | false |
+| options.confromButtonText | 确认按钮文字 | string | —  | '确认' |
+| options.confirmButtonType | 确认按钮类型 | string | info,success,danger,warning,primary  | 'info' |
+| options.cancelButtonText | 取消按钮文字 | string |  —   | '取消' |
+| options.supperHTMLString | 是否支持html | boolean | true/false  | false |
+| options.callback | 关闭后回调 | function | —   | null |

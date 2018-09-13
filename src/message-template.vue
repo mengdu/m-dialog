@@ -13,8 +13,12 @@
     ref="dialog"
     class="m-message-box"
     >
-    <!-- <img :src="infoImg" alt="info" class="m-message-box-type-img" /> -->
-    <p>{{message}}</p>
+    <div class="m-message-box--content" :class="{'has-type-icon': !!msgIcon}">
+      <img v-if="msgIcon" :src="msgIcon" alt="info" class="m-message-box-type-img" />
+
+      <div v-if="supperHTMLString" v-html="message"></div>
+      <div v-else>{{message}}</div>
+    </div>
     <div slot="footer"
       :class="{'text-center': controlButtonCenter}"
       >
@@ -26,7 +30,16 @@
 <script>
 import MDialog from './dialog'
 import MbButton from './button'
-// import infoImg from './assets/info.svg'
+import infoImg from './assets/info.svg'
+import warningImg from './assets/warning.svg'
+import errorImg from './assets/error.svg'
+import successImg from './assets/success.svg'
+const icons = {
+  info: infoImg,
+  warning: warningImg,
+  danger: errorImg,
+  success: successImg
+}
 
 export default {
   components: {
@@ -39,19 +52,23 @@ export default {
       title: '提示',
       width: '300px',
       message: '',
-      type: 'info',
       showClose: true,
       isMiddle: true,
       closeOnClickModal: true,
       closeOnPressEscape: false,
       controlButtonCenter: false,
-      confromButtonText: '确定',
+      confromButtonText: '确认',
       confirmButtonType: 'info',
       cancelButtonText: '取消',
       hasCancelButton: false,
       supperHTMLString: false,
-      callback: null
-      // infoImg
+      callback: null,
+      typeIcon: ''
+    }
+  },
+  computed: {
+    msgIcon () {
+      return icons[this.typeIcon] ? icons[this.typeIcon] : this.typeIcon
     }
   },
   methods: {
@@ -92,9 +109,15 @@ export default {
     padding-top: 0;
     text-align: right;
   }
+  .m-message-box .m-message-box--content.has-type-icon {
+    padding-left: 50px;
+  }
   .m-message-box .m-message-box-type-img {
     width: 30px;
     height: 30px;
+    margin-left: -45px;
+    margin-top: -5px;
+    float: left;
     vertical-align: middle;
   }
   .m-message-box .m-dialog__body p{

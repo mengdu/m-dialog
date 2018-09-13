@@ -15,6 +15,7 @@ function eventLoop () {
     data: {
       message: item.msg,
       ...item.options,
+      hasCancelButton: false,
       callback () {
         userCallback && userCallback()
         setTimeout(() => {

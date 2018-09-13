@@ -14,6 +14,7 @@ function eventLoop () {
     data: {
       message: item.msg,
       hasCancelButton: true,
+      closeOnClickModal: false,
       ...item.options
     }
   })

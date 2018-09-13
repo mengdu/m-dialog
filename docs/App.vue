@@ -99,7 +99,9 @@ export default {
       console.log('close', type)
     },
     handleAlert1 () {
-      this.$alert('Alert 消息框', {
+      this.$alert('Alert 消息框：<strong>加粗显示</strong>', {
+        hasCancelButton: true,
+        supperHTMLString: true,
         callback (type) {
           console.log('alert cb')
         }
@@ -107,11 +109,16 @@ export default {
     },
     handleConfirm1 () {
       this.$confirm('你确定要删除么？', {
-        title: '警告'
+        title: '警告',
+        closeOnPressEscape: true,
+        confirmButtonType: 'danger',
+        typeIcon: 'danger',
       }).then(() => {
         console.log('confirm')
+        // alert('确认了操作')
       }).catch(() => {
         console.log('cancel')
+        // alert('取消了操作')
       })
     }
   },
