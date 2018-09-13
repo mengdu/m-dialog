@@ -10,4 +10,9 @@ MDialog.install = function (Vue, options = {}) {
   Vue.prototype['$' + (options.confirmName || 'confirm')] = Confirm
 }
 
-export default MDialog
+export {
+  MDialog as default,
+  MDialog,
+  Alert,
+  Confirm
+}

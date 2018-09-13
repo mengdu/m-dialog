@@ -108,7 +108,7 @@ Vue.use(MDialog)
 |---------- |-------------- |---------- |--------------------------------  |-------- |
 | options.title | 显示标题 | string | — | '提示' |
 | options.width | 提示框宽度 | string | — | '300px' |
-| options.typeIcon | 提示图标 | string | 图片url,info,warning,danger,success | '300px' |
+| options.typeIcon | 提示图标 | string | 图片url,info,warning,danger,success | '' |
 | options.showClose | 是否显示关闭按钮 | boolean | true/false | true |
 | options.isMiddle | 是否居中 | boolean | true/false | true |
 | options.closeOnClickModal | 点击遮罩层是否关闭 | boolean | true/false | true |
