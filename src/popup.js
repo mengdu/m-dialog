@@ -72,7 +72,7 @@ export default {
           }
         }
       }
-      window.popup = Popup
+
       document.body.appendChild(Popup.$el)
     }
 
