@@ -1,5 +1,5 @@
 <template>
-  <transition name="dialog-fade" appear>
+  <transition :name="fadeName" appear>
   <div class="m-dialog__wrapper"
     :class="{
       'm-dialog__top': isCurrent,
@@ -47,7 +47,11 @@ export default {
     },
     beforeClose: Function,
     isMiddle: Boolean,
-    marginTop: String
+    marginTop: String,
+    fadeName: {
+      type: String,
+      default: 'slide-fade'
+    }
   },
   data () {
     return {
