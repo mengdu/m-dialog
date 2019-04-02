@@ -1,9 +1,9 @@
-import {MDialog, Alert, Confirm} from './dist/index'
+import {Dialog, Alert, Confirm} from './dist/index'
 import './dist/css/default.css'
 
 export {
-  MDialog as default,
-  MDialog,
+  Dialog as default,
+  Dialog,
   Alert,
   Confirm
 }
