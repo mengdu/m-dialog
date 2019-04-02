@@ -25,7 +25,7 @@
       <mb-button plain size="small" @click="handleCancel" v-if="hasCancelButton">{{cancelButtonText}}</mb-button>
       <mb-button :type="confirmButtonType" size="small" @click="handleConfrim">{{confromButtonText}}</mb-button>
     </div>
-    </m-dialog>
+  </m-dialog>
 </template>
 <script>
 import MDialog from './dialog'
@@ -48,7 +48,7 @@ export default {
   },
   data () {
     return {
-      show: false,
+      show: true,
       title: '提示',
       width: '300px',
       message: '',
@@ -120,7 +120,7 @@ export default {
     float: left;
     vertical-align: middle;
   }
-  .m-message-box .m-dialog__body p{
+  .m-message-box .m-dialog__body p {
     margin: 0;
   }
 </style>
