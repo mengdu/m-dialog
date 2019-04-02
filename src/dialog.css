@@ -3,9 +3,9 @@
   margin: 0px auto 50px;
   margin-top: 15vh;
   position: relative;
-  box-shadow: rgba(0, 0, 0, 0.3) 0px 1px 3px;
+  box-shadow: 0 2px 20px rgba(26, 26, 26, 0.1);
   box-sizing: border-box;
-  border-radius: 2px;
+  border-radius: 3px;
   background: #fff;
 }
 .m-dialog__wrapper {
@@ -51,7 +51,7 @@
   padding-bottom: 10px;
 }
 .m-dialog .m-dialog__title {
-  font-size: 18px;
+  font-size: 16px;
   color: #2c3e50;
   margin-right: 25px;
 }
@@ -77,13 +77,19 @@
   display: table;
   clear: both;
 }
-.dialog-fade-enter-active {
-  animation: dialog-fade-in 0.3s;
+.slide-fade-enter-active {
+  animation: slide-down-in 0.3s;
 }
-.dialog-fade-leave-active {
-  animation: dialog-fade-out 0.3s;
+.slide-fade-leave-active {
+  animation: slide-up-out 0.3s;
 }
-@keyframes dialog-fade-in {
+.scale-fade-enter-active {
+  animation: scale-in 0.3s;
+}
+.scale-fade-leave-active {
+  animation: slide-up-out 0.3s;
+}
+@keyframes slide-down-in {
   0% {
     transform: translate3d(0, -20px, 0);
     opacity: 0;
@@ -93,7 +99,7 @@
     opacity: 1;
   }
 }
-@keyframes dialog-fade-out {
+@keyframes slide-up-out {
   0% {
     transform: translate3d(0, 0, 0);
     opacity: 1;
@@ -101,6 +107,16 @@
   100% {
     transform: translate3d(0, -20px, 0);
     opacity: 0;
+  }
+}
+@keyframes scale-in {
+  0% {
+    transform: scale(0.9);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
   }
 }
 .m-popup-wrapper {
@@ -135,4 +151,46 @@
   100% {
     opacity: 0;
   }
+}
+/* message-box */
+.m-message-box .m-dialog__footer {
+  text-align: right;
+}
+.m-message-box .m-message-box--content.has-type-icon {
+  padding-left: 50px;
+}
+.m-message-box .m-message-box-type-img {
+  width: 30px;
+  height: 30px;
+  margin-left: -45px;
+  margin-top: -5px;
+  float: left;
+  vertical-align: middle;
+}
+.m-message-box .m-dialog__body p {
+  margin: 0;
+}
+.m-message-box .m-message-button--cancel,
+.m-message-box .m-message-button--confirm {
+  background: none;
+  border: none;
+  border-radius: 3px;
+  outline: none;
+  font-weight: bold;
+  font-size: 13px;
+  padding: 10px 20px;
+  color: #5e6175;
+  cursor: pointer;
+}
+.m-message-box .m-message-button--confirm {
+  margin-left: 5px;
+  color: #1297e4;
+}
+.m-message-box .m-message-button--confirm:hover {
+  color: #1297e4;
+  background-color: #f1f0f0;
+}
+.m-message-box .m-message-button--cancel:hover {
+  color: #D8364B;
+  background-color: #f9ecec;
 }

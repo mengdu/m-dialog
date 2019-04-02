@@ -1,7 +1,7 @@
 @dialog-name: m-dialog;
 
 .@{dialog-name} {
-  &__wrapper{
+  &__wrapper {
     position: fixed;
     top: 0;
     right: 0;
@@ -29,9 +29,8 @@
     display: flex;
     align-items: center;
     justify-content: center;
+
     & .@{dialog-name}{
-      // transform: translateY(-50%);
-      // top: 50%;
       margin: 0 !important;
     }
   }
@@ -39,28 +38,29 @@
   margin: 0px auto 50px;
   margin-top: 15vh;
   position: relative;
-  box-shadow: rgba(0, 0, 0, 0.3) 0px 1px 3px;
+  // box-shadow: rgba(0, 0, 0, 0.3) 0px 1px 3px;
+  box-shadow: 0 2px 20px rgba(26, 26, 26, 0.1);
   box-sizing: border-box;
-  border-radius: 2px;
+  border-radius: 3px;
   background: #fff;
 
   & &__header,
   & &__body,
-  & &__footer{
+  & &__footer {
     padding: 15px;
     box-sizing: border-box;
     word-break: break-word;
   }
-  & &__header{
+  & &__header {
     padding-bottom: 10px;
   }
 
-  & &__title{
-    font-size: 18px;
+  & &__title {
+    font-size: 16px;
     color: #2c3e50;
     margin-right: 25px;
   }
-  & &__close{
+  & &__close {
     font-weight: 100;
     font-size: 20px;
     color: #909399;
@@ -73,46 +73,65 @@
     outline: 0;
     cursor: pointer;
   }
-  & &__close:hover{
+  & &__close:hover {
     color: #ef4848;
   }
 
   & &__footer:before,
-  & &__footer:after{
+  & &__footer:after {
     content: "";
     display: table;
     clear: both;
   }
 }
 
-.dialog-fade-enter-active{
-  animation:dialog-fade-in .3s;
+.slide-fade-enter-active {
+  animation: slide-down-in .3s;
 }
-.dialog-fade-leave-active{
-  animation:dialog-fade-out .3s;
-}
-
-@keyframes dialog-fade-in{
-  0%{
-    transform:translate3d(0,-20px,0);
-    opacity:0;
-  }
-  100%{
-    transform:translate3d(0,0,0);
-    opacity:1;
-  }
+.slide-fade-leave-active {
+  animation: slide-up-out .3s;
 }
 
-@keyframes dialog-fade-out{
-  0%{
-    transform:translate3d(0,0,0);
-    opacity:1;
+.scale-fade-enter-active {
+  animation: scale-in .3s;
+}
+.scale-fade-leave-active {
+  animation: slide-up-out .3s;
+}
+
+@keyframes slide-down-in {
+  0% {
+    transform: translate3d(0,-20px,0);
+    opacity: 0;
   }
-  100%{
-    transform:translate3d(0,-20px,0);
-    opacity:0;
+  100% {
+    transform: translate3d(0,0,0);
+    opacity: 1;
   }
 }
+
+@keyframes slide-up-out {
+  0% {
+    transform: translate3d(0,0,0);
+    opacity: 1;
+  }
+  100% {
+    transform: translate3d(0,-20px,0);
+    opacity: 0;
+  }
+}
+
+@keyframes scale-in {
+  0% {
+    transform: scale(0.9);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
 
 .m-popup-wrapper {
   position: fixed;
@@ -126,27 +145,81 @@
   z-index: 10000;
 }
 
-.popup-fade-enter-active{
+.popup-fade-enter-active {
   animation: popup-fade-in 0.3s;
 }
-.popup-fade-leave-active{
+.popup-fade-leave-active {
   animation: popup-fade-out 0.3s;
 }
 
-@keyframes popup-fade-in{
-  0%{
-    opacity:0;
+@keyframes popup-fade-in {
+  0% {
+    opacity: 0;
   }
-  100%{
-    opacity:1;
+  100% {
+    opacity: 1;
   }
 }
 
-@keyframes popup-fade-out{
-  0%{
-    opacity:1;
+@keyframes popup-fade-out {
+  0% {
+    opacity: 1;
   }
-  100%{
-    opacity:0;
+  100% {
+    opacity: 0;
+  }
+}
+
+
+/* message-box */
+.m-message-box {
+  .m-dialog__footer {
+    text-align: right;
+  }
+
+  .m-message-box--content.has-type-icon {
+    padding-left: 50px;
+  }
+
+  .m-message-box-type-img {
+    width: 30px;
+    height: 30px;
+    margin-left: -45px;
+    margin-top: -5px;
+    float: left;
+    vertical-align: middle;
+  }
+
+  .m-dialog__body p {
+    margin: 0;
+  }
+
+  .m-message-button--cancel,
+  .m-message-button--confirm {
+    background: none;
+    border: none;
+    border-radius: 3px;
+    outline: none;
+    font-weight: bold;
+    font-size: 13px;
+    padding: 10px 20px;
+    color: #5e6175;
+    cursor: pointer;
+  }
+
+  .m-message-button--confirm {
+    margin-left: 5px;
+    color: #1297e4;
+
+    &:hover {
+      color: #1297e4;
+      background-color: #f1f0f0;
+    }
+  }
+  .m-message-button--cancel {
+    &:hover {
+      color: #D8364B;
+      background-color: #f9ecec;
+    }
   }
 }
