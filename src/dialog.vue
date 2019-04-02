@@ -1,5 +1,5 @@
 <template>
-  <transition name="dialog-fade">
+  <transition name="dialog-fade" appear>
   <div class="m-dialog__wrapper"
     :class="{
       'm-dialog__top': isCurrent,
