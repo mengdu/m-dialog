@@ -14,9 +14,8 @@
     ref="dialog"
     class="m-message-box"
     >
-    <div class="m-message-box--content" :class="{'has-type-icon': !!msgIcon}">
-      <img v-if="msgIcon" :src="msgIcon" alt="info" class="m-message-box-type-img" />
-
+    <div class="m-message-box--content" :class="{'has-type-icon': !!iconType}">
+      <icon v-if="iconType" :name="iconType" class="m-message-box-type-img" />
       <div v-if="supperHTMLString" v-html="message"></div>
       <div v-else>{{message}}</div>
     </div>
@@ -30,21 +29,12 @@
 </template>
 <script>
 import MDialog from './dialog'
-import infoImg from './assets/info.svg'
-import warningImg from './assets/warning.svg'
-import errorImg from './assets/error.svg'
-import successImg from './assets/success.svg'
-
-const icons = {
-  info: infoImg,
-  warning: warningImg,
-  danger: errorImg,
-  success: successImg
-}
+import Icon from './icon'
 
 export default {
   components: {
-    MDialog
+    MDialog,
+    Icon
   },
   data () {
     return {
@@ -64,13 +54,8 @@ export default {
       hasCancelButton: false,
       supperHTMLString: false,
       callback: null,
-      typeIcon: '',
+      iconType: '',
       fadeName: 'scale-fade'
-    }
-  },
-  computed: {
-    msgIcon () {
-      return icons[this.typeIcon] ? icons[this.typeIcon] : this.typeIcon
     }
   },
   methods: {
