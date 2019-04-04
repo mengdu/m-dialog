@@ -13,6 +13,9 @@ Dialog.install = function (Vue, options = {}) {
   if (typeof options.confirmOptions === 'object') Confirm.config(options.confirmOptions)
 }
 
+Dialog.Alert = Alert
+Dialog.Confirm = Confirm
+
 export {
   Dialog as default,
   Dialog,
