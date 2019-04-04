@@ -60,6 +60,18 @@
          <iframe src="https://www.lanyueos.com/" frameborder="0" style="width: 1000px;height: 600px;"></iframe>
         </m-dialog>
 
+      <m-dialog
+        title="自定义过渡动画"
+        :show.sync="show5"
+        width="350px"
+        is-middle
+        fade-name="test-fade"
+        >
+        <p><strong>自定义弹窗动画</strong>
+          <m-button type="info" size="mini" @click="$alert('自定义动画', { fadeName: 'test-fade' })">Alert</m-button>
+        </p>
+        </m-dialog>
+
       <m-button @click="show = !show" size="small" type="info">modal</m-button>
       <m-button @click="show2 = !show2" size="small" type="info">modal2</m-button>
       <m-button @click="show3 = !show3" size="small" type="info">modal3</m-button>
@@ -70,6 +82,7 @@
       <p>
         <m-button @click="handleConfirm2" size="small" type="success">列队多个对话框</m-button>
         <m-button @click="handleConfirm3" size="small" type="success">多个对话框（不列队）</m-button>
+        <m-button @click="show5 = true" size="small" type="success">自定义弹窗动画</m-button>
       </p>
       <p>
         <label><input type="checkbox" v-model="appendToBody">append-to-body</label>
@@ -119,6 +132,7 @@ export default {
       show2: false,
       show3: false,
       show4: false,
+      show5: false,
       appendToBody: false,
       noHead: false,
       closeOnClickModal: true,
