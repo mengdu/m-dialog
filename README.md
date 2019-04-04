@@ -25,14 +25,18 @@ Vue.use(MDialog) // 将挂载 m-dialog组件和 Vue.prototype.$alert 和 Vue.pro
 
 如果 `Vue.prototype.$alert` 和 `Vue.prototype.$confirm` 方法冲突，通过配置：
 
+
 ```js
 Vue.use(MDialog, {
   dialogName: 'm-dialog',
   alertName: 'msg',
-  confirmName: 'dialog'
+  confirmName: 'dialog',
+  alertOptions: {}, // alert全部默认配置
+  confirmOptions: {} // confirm 全局默认配置
 })
 
 ```
+
 
 ```html
 <m-dialog 
@@ -53,7 +57,6 @@ Vue.use(MDialog, {
       <m-button plain @click="show = false">取消</m-button>
       <m-button type="info">确定</m-button>
     </div>
-    
   </div>
 </m-dialog>
 ```
