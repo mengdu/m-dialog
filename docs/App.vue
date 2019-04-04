@@ -66,6 +66,11 @@
       <m-button @click="show4 = !show4" size="small" type="info">Iframe</m-button>
       <m-button @click="handleAlert1" size="small" type="danger">alert</m-button>
       <m-button @click="handleConfirm1" size="small" type="success">confirm</m-button>
+
+      <p>
+        <m-button @click="handleConfirm2" size="small" type="success">列队多个对话框</m-button>
+        <m-button @click="handleConfirm3" size="small" type="success">多个对话框（不列队）</m-button>
+      </p>
       <p>
         <label><input type="checkbox" v-model="appendToBody">append-to-body</label>
         <label><input type="checkbox" v-model="noHead">no-head </label>
@@ -90,6 +95,14 @@ import ForkLink from './components/fork-link'
 import Readme from '~/README.md'
 import Doc from './doc.md'
 import pkg from '~/package.json'
+
+function sleep (time) {
+  return new Promise(function (resolve, reject) {
+    setTimeout(() => {
+      resolve()
+    }, time);
+  })
+}
 
 export default {
   name: 'App',
@@ -152,6 +165,21 @@ export default {
         console.log('cancel')
         // alert('取消了操作')
       })
+    },
+
+    handleConfirm2 () {
+      this.$confirm('Are you sure ?', { title: '对话框1', iconType: 'question' })
+      this.$confirm('Are you sure ?', { title: '对话框2', iconType: 'question', isMiddle: false })
+      this.$confirm('Are you sure ?', { title: '对话框3', iconType: 'question', width: '250px' })
+    },
+    async handleConfirm3 () {
+      this.$confirm.confirm('Are you sure ?', { title: '对话框1', iconType: 'question' })
+      await sleep(500)
+      this.$confirm.confirm('Are you sure ?', { title: '对话框2', iconType: 'info', isMiddle: false })
+      await sleep(500)
+      this.$confirm.confirm('Are you sure ?', { title: '对话框3', iconType: 'question', width: '250px' })
+      await sleep(500)
+      this.$confirm.confirm('Are you sure ?', { title: '对话框4', iconType: 'question', width: '450px' })
     }
   },
   computed: {
