@@ -9,6 +9,7 @@
     :close-on-press-escape='true'
     :before-close="handleBeforeClose"
     :is-middle="isMiddle"
+    :fade-name="fadeName"
     @close="handleClose"
     ref="dialog"
     class="m-message-box"
@@ -22,18 +23,18 @@
     <div slot="footer"
       :class="{'text-center': controlButtonCenter}"
       >
-      <mb-button plain size="small" @click="handleCancel" v-if="hasCancelButton">{{cancelButtonText}}</mb-button>
-      <mb-button :type="confirmButtonType" size="small" @click="handleConfrim">{{confromButtonText}}</mb-button>
+      <button :class="cancelButtonClassName" @click="handleCancel" v-if="hasCancelButton">{{cancelButtonText}}</button>
+      <button :class="confirmButtonClassName" @click="handleConfrim">{{confromButtonText}}</button>
     </div>
-    </m-dialog>
+  </m-dialog>
 </template>
 <script>
 import MDialog from './dialog'
-import MbButton from './button'
 import infoImg from './assets/info.svg'
 import warningImg from './assets/warning.svg'
 import errorImg from './assets/error.svg'
 import successImg from './assets/success.svg'
+
 const icons = {
   info: infoImg,
   warning: warningImg,
@@ -43,13 +44,12 @@ const icons = {
 
 export default {
   components: {
-    MDialog,
-    MbButton
+    MDialog
   },
   data () {
     return {
-      show: false,
-      title: '提示',
+      show: true,
+      title: 'Message',
       width: '300px',
       message: '',
       showClose: true,
@@ -57,13 +57,15 @@ export default {
       closeOnClickModal: true,
       closeOnPressEscape: false,
       controlButtonCenter: false,
-      confromButtonText: '确认',
-      confirmButtonType: 'info',
-      cancelButtonText: '取消',
+      confromButtonText: 'Confirm',
+      cancelButtonText: 'Cancel',
+      cancelButtonClassName: 'm-message-button--cancel',
+      confirmButtonClassName: 'm-message-button--confirm',
       hasCancelButton: false,
       supperHTMLString: false,
       callback: null,
-      typeIcon: ''
+      typeIcon: '',
+      fadeName: 'scale-fade'
     }
   },
   computed: {
@@ -104,23 +106,3 @@ export default {
   }
 }
 </script>
-<style>
-  .m-message-box .m-dialog__footer{
-    padding-top: 0;
-    text-align: right;
-  }
-  .m-message-box .m-message-box--content.has-type-icon {
-    padding-left: 50px;
-  }
-  .m-message-box .m-message-box-type-img {
-    width: 30px;
-    height: 30px;
-    margin-left: -45px;
-    margin-top: -5px;
-    float: left;
-    vertical-align: middle;
-  }
-  .m-message-box .m-dialog__body p{
-    margin: 0;
-  }
-</style>

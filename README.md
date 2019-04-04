@@ -11,13 +11,14 @@ Vue 的 Dialog 模态框组件，包含了alert和confirm对话框。
 
 ## use
 
-
 ```ls
 npm install vue-m-dialog
 ```
 
 ```js
 import MDialog from 'vue-m-dialog'
+// ro
+import { Dialog, Alert, Confirm } from 'vue-m-dialog'
 
 Vue.use(MDialog) // 将挂载 m-dialog组件和 Vue.prototype.$alert 和 Vue.prototype.$confirm
 ```
@@ -75,6 +76,7 @@ Vue.use(MDialog, {
 | no-head | 去掉标题部分 | boolean | true/false | false |
 | is-middle | 是否居中 | boolean | true/false | false |
 | margin-top | 距离顶部 | string | — | — |
+| fade-name | 弹窗动画过渡类名 | string | 'scale-fade', 'slide-fade' | 'slide-fade' |
 
 
 ### Slot
@@ -124,8 +126,10 @@ Vue.use(MDialog, {
 | options.closeOnPressEscape | 按下esc按钮是否关闭 | boolean | true/false | false |
 | options.closeOnPressEscape | 按下esc按钮是否关闭 | boolean | true/false | false |
 | options.controlButtonCenter | 控制按钮是否居中 | boolean | true/false | false |
-| options.confromButtonText | 确认按钮文字 | string | —  | '确认' |
-| options.confirmButtonType | 确认按钮类型 | string | info,success,danger,warning,primary  | 'info' |
-| options.cancelButtonText | 取消按钮文字 | string |  —   | '取消' |
+| options.confromButtonText | 确认按钮文字 | string | —  | 'Confirm' |
+| options.cancelButtonText | 取消按钮文字 | string |  —   | 'Cancel' |
+| options.cancelButtonClassName | 取消按钮类名 | string |  —   | 'm-message-button--cancel' |
+| options.confirmButtonClassName | 确认按钮类名 | string |  —   | 'm-message-button--confirm' |
 | options.supperHTMLString | 是否支持html | boolean | true/false  | false |
 | options.callback | 关闭后回调 | function | —   | null |
+| options.fadeName | 弹窗动画过渡类名 | 'scale-fade', 'slide-fade' | 'slide-fade' |

@@ -10,6 +10,7 @@ function eventLoop () {
   doing = true
   const item = alerts.shift()
   const userCallback = item.options.callback
+
   let instance = new Mask({
     el: document.createElement('div'),
     data: {
@@ -25,7 +26,8 @@ function eventLoop () {
       }
     }
   })
-  instance.show = true
+
+  return instance
 }
 
 export default function (msg, options = {}) {

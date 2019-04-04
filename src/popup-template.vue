@@ -1,6 +1,6 @@
 <template>
   <div class="m-popup">
-    <transition name="popup-fade">
+    <transition name="popup-fade" appear>
     <div class="m-popup-wrapper" v-if="show"></div>
     </transition>
   </div>

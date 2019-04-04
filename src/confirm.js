@@ -9,6 +9,7 @@ function eventLoop () {
   if (doing || confirms.length === 0) return
   doing = true
   const item = confirms.shift()
+
   let instance = new Mask({
     el: document.createElement('div'),
     data: {
@@ -18,8 +19,6 @@ function eventLoop () {
       ...item.options
     }
   })
-
-  instance.show = true
 
   instance.$on('close', function (type, clickButton) {
     if (type === 'user') {
