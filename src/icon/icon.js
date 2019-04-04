@@ -48,4 +48,11 @@ const Icon = {
 
 Icon.add = addIcon
 
+<<<<<<< HEAD
+=======
+Icon.has = function (name) {
+  return !!icons[name]
+}
+
+>>>>>>> dev
 export default Icon

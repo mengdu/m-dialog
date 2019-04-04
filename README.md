@@ -25,14 +25,18 @@ Vue.use(MDialog) // 将挂载 m-dialog组件和 Vue.prototype.$alert 和 Vue.pro
 
 如果 `Vue.prototype.$alert` 和 `Vue.prototype.$confirm` 方法冲突，通过配置：
 
+
 ```js
 Vue.use(MDialog, {
   dialogName: 'm-dialog',
   alertName: 'msg',
-  confirmName: 'dialog'
+  confirmName: 'dialog',
+  alertOptions: {}, // alert全部默认配置
+  confirmOptions: {} // confirm 全局默认配置
 })
 
 ```
+
 
 ```html
 <m-dialog 
@@ -53,7 +57,6 @@ Vue.use(MDialog, {
       <m-button plain @click="show = false">取消</m-button>
       <m-button type="info">确定</m-button>
     </div>
-    
   </div>
 </m-dialog>
 ```
@@ -97,19 +100,52 @@ Vue.use(MDialog, {
 
 ### Alert 提示框
 
-`alert` 是一个提示窗
+`Alert` 是一个提示窗
 
-**alert(msg[, options])** 提示一条信息，并发多次调用会列队
+```js
+import { Alert } from 'vue-m-dialog'
+
+Alert('Hello !')
+// ro
+Alert.alert('Hello !')
+```
+
+**Alert(msg[, options])** 提示一条信息，这是个列队模式，同时执行多次会逐个弹窗，如果需要多个弹出，请使用 `Alert.alert`
 
   + **msg** `string` 必须，消息内容
   + **options** `object` 可选，配置对象
+
+
+**Alert.alert(msg[, options])** 不列队弹窗， 返回当前组件对象
+
+  + **msg** `string` 必须，消息内容
+  + **options** `object` 可选，配置对象
+
+
+**Alert.config(options)** 设置全局的默认配置
+
 
 ### Confirm 对话框
 
-**confrim(msg[, options])** 对话框，并发多次调用会列队；返回 `Promise` 对象；确认会resolve，取消会reject
+```js
+import { Confirm } from 'vue-m-dialog'
+
+Confirm('Are you sure ?')
+// ro
+Confirm.confirm('Are you sure ?')
+```
+
+**Confrim(msg[, options])** 对话框，并发多次调用会列队；返回 `Promise` 对象；确认会 `resolve`，取消会 `reject`；如果不需要列队请用 `Confirm.confirm`
 
   + **msg** `string` 必须，消息内容
   + **options** `object` 可选，配置对象
+
+**Confirm.confirm(msg[, options])** 对话框不列队处理
+
+  + **msg** `string` 必须，消息内容
+  + **options** `object` 可选，配置对象
+
+**Confirm.config(options)** 设置全局默认配置
 
 
 
@@ -117,9 +153,10 @@ Vue.use(MDialog, {
 
 | 参数      | 说明          | 类型      | 可选值                           | 默认值  |
 |---------- |-------------- |---------- |--------------------------------  |-------- |
-| options.title | 显示标题 | string | — | '提示' |
+| options.title | 显示标题 | string | — | 'Message' |
 | options.width | 提示框宽度 | string | — | '300px' |
-| options.typeIcon | 提示图标 | string | 图片url,info,warning,danger,success | '' |
+| options.iconType | 提示图标 | string | `info`, `warning`, `danger`, `success`, 'question | '' |
+| options.iconImg | 提示图标url | string | — | '' |
 | options.showClose | 是否显示关闭按钮 | boolean | true/false | true |
 | options.isMiddle | 是否居中 | boolean | true/false | true |
 | options.closeOnClickModal | 点击遮罩层是否关闭 | boolean | true/false | true |

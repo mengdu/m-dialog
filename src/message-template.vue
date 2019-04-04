@@ -14,8 +14,9 @@
     ref="dialog"
     class="m-message-box"
     >
-    <div class="m-message-box--content" :class="{'has-type-icon': !!iconType}">
-      <icon v-if="iconType" :name="iconType" class="m-message-box-type-img" />
+    <div class="m-message-box--content" :class="{'has-type-icon': (iconImg || hasIcon)}">
+      <img v-if="iconImg" :src="iconImg" alt="info" class="m-message-box-type-img" />
+      <icon v-else-if="hasIcon" :name="iconType" class="m-message-box-type-img"/>
       <div v-if="supperHTMLString" v-html="message"></div>
       <div v-else>{{message}}</div>
     </div>
@@ -55,7 +56,13 @@ export default {
       supperHTMLString: false,
       callback: null,
       iconType: '',
+      iconImg: '',
       fadeName: 'scale-fade'
+    }
+  },
+  computed: {
+    hasIcon () {
+      return Icon.has(this.iconType)
     }
   },
   methods: {

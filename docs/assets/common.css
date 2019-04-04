@@ -24,7 +24,7 @@ main {
   margin-top: 30px;
   border-radius: 5px;
   padding: 20px 25px;
-  max-width: 800px;
+  max-width: 960px;
   margin-bottom: 100px;
   background: #fff;
   box-sizing: border-box;
@@ -146,4 +146,37 @@ code {
   background: #f9f9f9;
   border-color: #ccc;
   cursor: not-allowed
+}
+
+
+/* 自定义弹窗动画 */
+.test-fade-enter-active {
+  transform-origin: center;
+  animation: rotate-in .3s ease-in-out;
+}
+.test-fade-leave-active {
+  transform-origin: center;
+  animation: rotate-out .3s ease-in-out;
+}
+
+@keyframes rotate-in {
+  0% {
+    transform: rotate(-180deg) scale3d(.3,.3,.3);
+    opacity: 0;
+  }
+  100% {
+    transform: rotate(0deg);
+    opacity: 1;
+  }
+}
+
+@keyframes rotate-out {
+  0% {
+    transform: rotate(0deg);
+    opacity: 1;
+  }
+  100% {
+    transform: rotate(180deg) scale3d(.3,.3,.3);
+    opacity: 0;
+  }
 }

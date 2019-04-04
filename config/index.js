@@ -43,7 +43,7 @@ module.exports = {
     cssSourceMap: true
   },
   pack: {
-    // library: 'jQuery',
+    library: 'Dialog',
     libraryTarget: 'umd',
     libraryExport: 'default',
     umdNamedDefine: true,

@@ -181,6 +181,7 @@
   padding: 10px 20px;
   color: #5e6175;
   cursor: pointer;
+  vertical-align: middle;
 }
 .m-message-box .m-message-button--confirm {
   margin-left: 5px;

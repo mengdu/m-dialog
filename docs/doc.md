@@ -9,13 +9,13 @@
     methods: {
       handleAlert1 () {
         this.$alert('这是一个条提示消息', {
-          typeIcon: 'info'
+          iconType: 'info'
         })
       },
       handleAlert2 () {
         this.$alert('这是一个警告信息!', {
           title: '警告',
-          typeIcon: 'warning',
+          iconType: 'warning',
           confirmButtonType: 'warning',
           confromButtonText: '确定'
         })
@@ -34,7 +34,7 @@
       },
       handleConfirm2 () {
         this.$confirm('你确定删除吗？', {
-          typeIcon: 'danger',
+          iconType: 'danger',
           confirmButtonType: 'danger'
         }).then(() => {
           // alert('确认了操作')
@@ -44,7 +44,7 @@
       },
       handleConfirm3 () {
         this.$confirm('你确定删除ID为：<strong>1001</strong> 的数据吗？', {
-          typeIcon: 'danger',
+          iconType: 'danger',
           confirmButtonType: 'danger',
           supperHTMLString: true
         })
@@ -96,13 +96,13 @@
     methods: {
       handleAlert1 () {
         this.$alert('这是一个条提示消息', {
-          typeIcon: 'info'
+          iconType: 'info'
         })
       },
       handleAlert2 () {
         this.$alert('这是一个警告信息!', {
           title: '警告',
-          typeIcon: 'warning',
+          iconType: 'warning',
           confirmButtonType: 'warning',
           confromButtonText: '确定'
         })
@@ -142,7 +142,7 @@
       },
       handleConfirm2 () {
         this.$confirm('你确定删除吗？', {
-          typeIcon: 'danger',
+          iconType: 'danger',
           confirmButtonType: 'danger'
         }).then(() => {
           // alert('确认了操作')
@@ -152,7 +152,7 @@
       },
       handleConfirm3 () {
         this.$confirm('你确定删除ID为：<strong>1001</strong> 的数据吗？', {
-          typeIcon: 'danger',
+          iconType: 'danger',
           confirmButtonType: 'danger',
           supperHTMLString: true
         })
