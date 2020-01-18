@@ -11,6 +11,11 @@
     "lint": "vue-cli-service lint",
     "open": "dev serve -o docs"
   },
+  "files": [
+    "dist",
+    "src",
+    "types"
+  ],
   "website": "https://lanyueos.com",
   "github": "https://github.com/mengdu/m-dialog",
   "homepage": "https://mengdu.github.io/m-dialog",
