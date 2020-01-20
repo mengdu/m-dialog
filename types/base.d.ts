@@ -1,0 +1,18 @@
+export interface DialogOptions {
+  title?: string;
+  width?: string;
+  iconType?: IconType;
+  iconImg?: string;
+  showClose: boolean;
+  isMiddle: boolean;
+  closeOnClickModal: boolean;
+  closeOnPressEscape: boolean;
+  controlButtonCenter: boolean;
+  confromButtonText?: string;
+  cancelButtonText?: string;
+  cancelButtonClassName?: string;
+  confirmButtonClassName?: string;
+  supperHTMLString?: string;
+  callback?: () => void;
+  fadeName?: 'scale-fade' | 'slide-fade' | string
+}
