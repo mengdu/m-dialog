@@ -7,10 +7,10 @@
       <vc-button @click="show4 = true" type="info" size="medium">Iframe</vc-button>
       <vc-button @click="show5 = true" type="info" size="medium">自定义过渡动画</vc-button>
       <p></p>
-      <vc-button @click="$alert('Alert 弹窗')" type="primary" size="medium">Alert</vc-button>
-      <vc-button @click="$confirm('Confrim 弹窗')" type="primary" size="medium">Confirm</vc-button>
-      <vc-button @click="handleAlert" type="primary" size="medium">多个 Alert</vc-button>
-      <vc-button @click="handleConfirm" type="primary" size="medium">多个 Confirm</vc-button>
+      <vc-button @click="$alert('Alert 弹窗')" type="success" size="medium">Alert</vc-button>
+      <vc-button @click="$confirm('Confrim 弹窗')" type="success" size="medium">Confirm</vc-button>
+      <vc-button @click="handleAlert" type="success" size="medium">多个 Alert</vc-button>
+      <vc-button @click="handleConfirm" type="success" size="medium">多个 Confirm</vc-button>
     </div>
 
     <m-dialog :show.sync="show1" title="默认弹窗">
