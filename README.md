@@ -3,7 +3,7 @@
 
 Vue 的 `Dialog` 弹窗组件，包含了 `alert` 和 `confirm` 对话框。
 
-[Live Demo](https://mengdu.github.io/m-dialog/example/index.html)
+[Live Demo](https://mengdu.github.io/m-dialog/index.html)
 
 > 参考代码：[el-dialog](http://element.eleme.io/#/zh-CN/component/dialog)
 
@@ -155,7 +155,6 @@ Confirm.confirm('Are you sure ?')
 | options.showClose | 是否显示关闭按钮 | boolean | true/false | true |
 | options.isMiddle | 是否居中 | boolean | true/false | true |
 | options.closeOnClickModal | 点击遮罩层是否关闭 | boolean | true/false | true |
-| options.closeOnPressEscape | 按下esc按钮是否关闭 | boolean | true/false | false |
 | options.closeOnPressEscape | 按下esc按钮是否关闭 | boolean | true/false | false |
 | options.controlButtonCenter | 控制按钮是否居中 | boolean | true/false | false |
 | options.confromButtonText | 确认按钮文字 | string | —  | 'Confirm' |
