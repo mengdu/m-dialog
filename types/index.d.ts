@@ -35,6 +35,6 @@ export {
 declare module 'vue/types/vue' {
   interface Vue {
     $alert: typeof Alert;
-    $confrim: typeof Confirm;
+    $confirm: typeof Confirm;
   }
 }

@@ -33,7 +33,7 @@ Vue.use(MDialog, {
 ```
 
 ```html
-<m-dialog 
+<m-dialog
   :show.sync="show"
   title="提示"
   :append-to-body="appendToBody"
@@ -130,7 +130,7 @@ Confirm('Are you sure ?')
 Confirm.confirm('Are you sure ?')
 ```
 
-**Confrim(msg[, options])** 对话框，并发多次调用会列队；返回 `Promise` 对象；确认会 `resolve`，取消会 `reject`；如果不需要列队请用 `Confirm.confirm`
+**Confirm(msg[, options])** 对话框，并发多次调用会列队；返回 `Promise` 对象；确认会 `resolve`，取消会 `reject`；如果不需要列队请用 `Confirm.confirm`
 
   + **msg** `string` 必须，消息内容
   + **options** `object` 可选，配置对象
@@ -157,7 +157,7 @@ Confirm.confirm('Are you sure ?')
 | options.closeOnClickModal | 点击遮罩层是否关闭 | boolean | true/false | true |
 | options.closeOnPressEscape | 按下esc按钮是否关闭 | boolean | true/false | false |
 | options.controlButtonCenter | 控制按钮是否居中 | boolean | true/false | false |
-| options.confromButtonText | 确认按钮文字 | string | —  | 'Confirm' |
+| options.confirmButtonText | 确认按钮文字 | string | —  | 'Confirm' |
 | options.cancelButtonText | 取消按钮文字 | string |  —   | 'Cancel' |
 | options.cancelButtonClassName | 取消按钮类名 | string |  —   | 'm-message-button--cancel' |
 | options.confirmButtonClassName | 确认按钮类名 | string |  —   | 'm-message-button--confirm' |

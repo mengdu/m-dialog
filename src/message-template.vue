@@ -24,7 +24,7 @@
       :class="{'text-center': controlButtonCenter}"
       >
       <button :class="cancelButtonClassName" @click="handleCancel" v-if="hasCancelButton">{{cancelButtonText}}</button>
-      <button :class="confirmButtonClassName" @click="handleConfrim">{{confromButtonText}}</button>
+      <button :class="confirmButtonClassName" @click="handleConfirm">{{confirmButtonText}}</button>
     </div>
   </m-dialog>
 </template>
@@ -48,7 +48,7 @@ export default {
       closeOnClickModal: true,
       closeOnPressEscape: false,
       controlButtonCenter: false,
-      confromButtonText: 'Confirm',
+      confirmButtonText: 'Confirm',
       cancelButtonText: 'Cancel',
       cancelButtonClassName: 'm-message-button--cancel',
       confirmButtonClassName: 'm-message-button--confirm',
@@ -73,9 +73,9 @@ export default {
         this.$refs['dialog'].$destroy()
       }, 3000)
     },
-    handleConfrim () {
+    handleConfirm () {
       this.show = false
-      this.clickButton = 'confrim'
+      this.clickButton = 'confirm'
     },
     handleCancel () {
       this.show = false

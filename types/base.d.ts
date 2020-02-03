@@ -8,7 +8,7 @@ export interface DialogOptions {
   closeOnClickModal: boolean;
   closeOnPressEscape: boolean;
   controlButtonCenter: boolean;
-  confromButtonText?: string;
+  confirmButtonText?: string;
   cancelButtonText?: string;
   cancelButtonClassName?: string;
   confirmButtonClassName?: string;
