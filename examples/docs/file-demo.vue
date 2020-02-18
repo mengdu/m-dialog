@@ -8,7 +8,7 @@
       <vc-button @click="show5 = true" type="info" size="medium">自定义过渡动画</vc-button>
       <p></p>
       <vc-button @click="$alert('Alert 弹窗')" type="success" size="medium">Alert</vc-button>
-      <vc-button @click="$confirm('Confrim 弹窗')" type="success" size="medium">Confirm</vc-button>
+      <vc-button @click="$confirm('Confirm 弹窗')" type="success" size="medium">Confirm</vc-button>
       <vc-button @click="handleAlert" type="success" size="medium">多个 Alert</vc-button>
       <vc-button @click="handleConfirm" type="success" size="medium">多个 Confirm</vc-button>
     </div>
