@@ -7,12 +7,12 @@ let doing = false
 let defaultOptions = {}
 
 function Confirm (msg, options = {}) {
-  const confrim = new Promise((resolve, reject) => {
+  const confirm = new Promise((resolve, reject) => {
     confirms.push({ msg, options, resolve, reject })
     eventLoop()
   })
 
-  return confrim
+  return confirm
 }
 
 function confirm (msg, options = {}) {
@@ -30,7 +30,7 @@ function confirm (msg, options = {}) {
 
     instance.$on('close', function (type, clickButton) {
       if (type === 'user') {
-        if (clickButton === 'confrim') {
+        if (clickButton === 'confirm') {
           resolve()
         } else {
           reject(new Error('Cancel'))
