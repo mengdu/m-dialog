@@ -1,10 +1,10 @@
 import Vue from 'vue'
 import { DialogOptions } from './base'
+export { IconType } from './base'
 import Alert from './alert'
 import Confirm from './confirm'
 
 export declare type CloseType = 'user' | 'esc' | 'button' | 'modal';
-export declare type IconType = 'info' | 'warning' | 'danger' | 'success' | 'question';
 
 declare class Dialog extends Vue {
   static install (vue: typeof Vue, options?: Object): void;

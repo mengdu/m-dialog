@@ -1,3 +1,5 @@
+export declare type IconType = 'info' | 'warning' | 'danger' | 'success' | 'question';
+
 export interface DialogOptions {
   title?: string;
   width?: string;
