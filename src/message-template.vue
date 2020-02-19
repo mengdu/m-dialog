@@ -17,7 +17,7 @@
     <div class="m-message-box--content" :class="{'has-type-icon': (iconImg || hasIcon)}">
       <img v-if="iconImg" :src="iconImg" alt="info" class="m-message-box-type-img" />
       <icon v-else-if="hasIcon" :name="iconType" class="m-message-box-type-img"/>
-      <div v-if="supperHTMLString" v-html="message"></div>
+      <div v-if="supportHTMLString" v-html="message"></div>
       <div v-else>{{message}}</div>
     </div>
     <div slot="footer"
@@ -53,7 +53,7 @@ export default {
       cancelButtonClassName: 'm-message-button--cancel',
       confirmButtonClassName: 'm-message-button--confirm',
       hasCancelButton: false,
-      supperHTMLString: false,
+      supportHTMLString: false,
       callback: null,
       iconType: '',
       iconImg: '',

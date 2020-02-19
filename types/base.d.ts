@@ -12,7 +12,7 @@ export interface DialogOptions {
   cancelButtonText?: string;
   cancelButtonClassName?: string;
   confirmButtonClassName?: string;
-  supperHTMLString?: string;
+  supportHTMLString?: string;
   callback?: () => void;
   fadeName?: 'scale-fade' | 'slide-fade' | string
 }

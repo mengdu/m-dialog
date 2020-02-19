@@ -161,6 +161,6 @@ Confirm.confirm('Are you sure ?')
 | options.cancelButtonText | 取消按钮文字 | string |  —   | 'Cancel' |
 | options.cancelButtonClassName | 取消按钮类名 | string |  —   | 'm-message-button--cancel' |
 | options.confirmButtonClassName | 确认按钮类名 | string |  —   | 'm-message-button--confirm' |
-| options.supperHTMLString | 是否支持html | boolean | true/false  | false |
+| options.supportHTMLString | 是否支持html | boolean | true/false  | false |
 | options.callback | 关闭后回调 | function | —   | null |
 | options.fadeName | 弹窗动画过渡类名 | 'scale-fade', 'slide-fade' | 'slide-fade' |
