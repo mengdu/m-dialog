@@ -1,7 +1,6 @@
 <template>
   <m-dialog
     :show.sync="show"
-    :title="title"
     :width="width"
     :append-to-body="true"
     :show-close="showClose"
@@ -14,6 +13,8 @@
     ref="dialog"
     class="m-message-box"
     >
+    <div v-if="supportHTMLString" slot="title" v-html="title"></div>
+    <div v-else slot="title">{{title}}</div>
     <div class="m-message-box--content" :class="{'has-type-icon': (iconImg || hasIcon)}">
       <img v-if="iconImg" :src="iconImg" alt="info" class="m-message-box-type-img" />
       <icon v-else-if="hasIcon" :name="iconType" class="m-message-box-type-img"/>
