@@ -11,7 +11,9 @@ jobs:
         uses: actions/checkout@v3
 
       - name: Install and Build 🔧 
-        run: npm run build:playground
+        run: |
+          npm install
+          npm run build:playground
 
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@v4.3.0
