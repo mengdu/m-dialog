@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Demo</title>
+  <script src="https://cdn.bootcdn.net/ajax/libs/vue/3.2.33/vue.global.min.js"></script>
+  <script src="../dist/index.umd.js"></script>
+  <link rel="stylesheet" href="../dist/style.css">
+</head>
+<body>
+<p>
+  <button id="btn1">Alert</button>
+  <button id="btn2">Confirm</button>
+  <button id="btn3">CreateMessageBox</button>
+</p>
+<script>
+window.onload = function () {
+  console.log(window.VueMMDialog)
+  window.VueMMDialog.setDefaultOptions({
+    draggable: true,
+    hasMask: false,
+    isPointerEventsNone: true
+  })
+
+  document.getElementById('btn1').onclick = function () {
+    window.VueMMDialog.alert('Hello Alert')
+  }
+
+  document.getElementById('btn2').onclick = function () {
+    window.VueMMDialog.confirm('Hello Confirm')
+  }
+
+  document.getElementById('btn3').onclick = function () {
+    window.VueMMDialog.createMessageBox({
+      title: 'Are you sure ?',
+      message: 'This is content. Continue ?',
+      cancelButtonText: 'No, Think again',
+      confirmButtonText: 'Okey !',
+      hasMask: false,
+      draggable: true,
+      isPointerEventsNone: true
+    }).then(res => console.log(res))
+  }
+}
+</script>
+</body>
+</html>

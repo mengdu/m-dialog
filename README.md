@@ -1,166 +1,160 @@
 
 ## Dialog
 
-Vue 的 `Dialog` 弹窗组件，包含了 `alert` 和 `confirm` 对话框。
+A Modal component for Vue 3.x.
+
+> Please use the [2.x](tree/v2.x) in Vue 2.x.
 
 [Live Demo](https://mengdu.github.io/m-dialog/index.html)
 
-> 参考代码：[el-dialog](http://element.eleme.io/#/zh-CN/component/dialog)
+![Preview](preview.png)
 
-## Use
+## Usage
 
 ```ls
 npm install vue-m-dialog
 ```
 
 ```js
-import MDialog from 'vue-m-dialog' // ro import { Dialog, Alert, Confirm } from 'vue-m-dialog'
-import 'vue-m-dialog/dist/index.css'
+import MDialogPlugin from 'vue-m-dialog'
+import 'vue-m-dialog/dist/style.css'
 
-Vue.use(MDialog) // 将挂载 m-dialog组件和 Vue.prototype.$alert 和 Vue.prototype.$confirm
-```
+// will set global
+// component `<m-dialog></m-dialog`
+// method `this.$alert(...)`
+// method `this.$confirm(...)`
+Vue.use(MDialogPlugin)
 
-如果 `Vue.prototype.$alert` 和 `Vue.prototype.$confirm` 方法冲突，通过配置：
-
-```js
-Vue.use(MDialog, {
+// or reset
+Vue.use(MDialogPlugin, {
+  // <m-dialog></m-dialog>
   dialogName: 'm-dialog',
+  // this.msg(...)
   alertName: 'msg',
-  confirmName: 'dialog',
-  alertOptions: {}, // alert全部默认配置
-  confirmOptions: {} // confirm 全局默认配置
+  // this.confirm(...)
+  confirmName: 'confirm',
+  // Set default options for messageBox
+  messageBoxDefaultOptions: {
+    // ...
+  },
 })
 ```
 
 ```html
 <m-dialog
-  :show.sync="show"
-  title="提示"
-  :append-to-body="appendToBody"
-  :close-on-click-modal="closeOnClickModal"
-  :close-on-press-escape="closeOnPressEscape"
-  :no-head="noHead"
-  :before-close="close"
-  @open="onOpen"
-  @close="onClose"
-  width="300px"
+  v-model="show"
+  title="Dialog Title"
   >
-  <span>这里是正文内容...</span>
-  <div slot="footer">
-    <div style="float: right">
-      <m-button plain @click="show = false">取消</m-button>
-      <m-button type="info">确定</m-button>
-    </div>
-  </div>
+  <p>This is body...</p>
+  <p>This is body...</p>
+  <p>This is body...</p>
+  <template v-slot:footer>
+    <button class="m-dialog--cancel-btn" @click="show = false">Cancel</button>
+    <button class="m-dialog--confirm-btn" @click="show = false">Okey !</button>
+  </template>
 </m-dialog>
 ```
 
+### Dialog Attributes
 
-### MDialog Attributes
+| Attribute | Type | Description | Default |
+|-----------|------|-------------|---------|
+| modelValue/v-model | boolean | Visibility of dialog | — |
+| title | string | Title | — |
+| appendTo | string | Append dialog itself to other container; use `body`, `#<ID>`, `null` | 'body' |
+| class | string | Custom class names for dialog | — |
+| width | string | Width of dialog | '400px' |
+| padding | string | Padding of dialog | '25px' |
+| top | string | Margin top of dialog | '50px' |
+| zIndex | string/number | zIndex for dialog wrapper | 1000 |
+| isMiddle | boolean | Show on middle | false |
+| hideHeader | boolean | Hide header | false |
+| hasMask | boolean | It has mask | true |
+| hideCloseButton | boolean | It has close button | false |
+| canClickMaskClose | boolean | Whether can be closed by clicking the mask | false |
+| draggable | boolean | Enable dragging feature for dialog  | false |
+| resetDrag | boolean | Whether to reset positon when displaying again | false |
+| isPointerEventsNone | boolean | Can click outside dialog when `hasMask=false` | false |
+| beforeClose | (cb: (ok: boolean) => void) => void | Callback before closes, and it will prevent Dialog from closing | — |
 
-| 参数                  | 说明                                            | 类型     | 可选值                     | 默认值       |
-|-----------------------|-------------------------------------------------|----------|----------------------------|--------------|
-| show                  | 是否显示 Dialog，支持 .sync 修饰符              | boolean  | —                          | false        |
-| title                 | Dialog 的标题，也可通过具名 slot （见下表）传入 | string   | —                          | —            |
-| width                 | Dialog 的宽度                                   | string   | —                          | 50%          |
-| auto-width            | 自动宽度                                        | boolean  | true/false                 | false        |
-| top                   | Dialog CSS 中的 margin-top 值                   | string   | —                          | 15vh         |
-| append-to-body        | 弹窗DOM是否插入到 body                          | boolean  | —                          | false        |
-| close-on-click-modal  | 是否可以通过点击 modal 关闭 Dialog              | boolean  | true/false                 | true         |
-| close-on-press-escape | 是否可以通过按下 `ESC` 键关闭 Dialog            | boolean  | true/false                 | true         |
-| show-close            | 是否显示关闭按钮                                | boolean  | true/false                 | true         |
-| before-close          | 关闭前的回调，会暂停 Dialog 的关闭              | function | —                          | —            |
-| no-head               | 去掉标题部分                                    | boolean  | true/false                 | false        |
-| is-middle             | 是否居中                                        | boolean  | true/false                 | false        |
-| margin-top            | 距离顶部                                        | string   | —                          | —            |
-| fade-name             | 弹窗动画过渡类名                                | string   | 'scale-fade', 'slide-fade' | 'slide-fade' |
+### Dialog Slots
 
-
-### Slot
-
-| name   | 说明                    |
+| Name   | Description             |
 |--------|-------------------------|
-| -      | Dialog 的内容           |
-| title  | Dialog 标题区的内容     |
-| footer | Dialog 按钮操作区的内容 |
+| -      | Content of the dialog |
+| title  | Content of the dialog title |
+| footer | Content of the dialog footer |
 
-### Events
+Use the defined footer style:
 
-| 事件名称 | 说明                                | 回调参数                                        |
-|----------|-------------------------------------|-------------------------------------------------|
-| close    | Dialog 关闭后回调，返回关闭触发类型 | closeType 值为 'user', 'esc', 'button', 'modal' |
-| open     | Dialog 打开的回调                   | —                                               |
-
-
-
-## Alert 提示框
-
-`Alert` 是一个提示窗
-
-```js
-import { Alert } from 'vue-m-dialog'
-
-Alert('Hello !')
-// ro
-Alert.alert('Hello !')
+```html
+<template v-slot:footer>
+  <button class="m-dialog--cancel-btn" @click="show = false">Cancel</button>
+  <button class="m-dialog--confirm-btn" @click="show = false">Okey !</button>
+</template>
 ```
 
-**Alert(msg[, options])** 提示一条信息，这是个列队模式，同时执行多次会逐个弹窗，如果需要多个弹出，请使用 `Alert.alert`
+### Dialog Events
 
-  + **msg** `string` 必须，消息内容
-  + **options** `object` 可选，配置对象
+| Name | Description  | Params |
+|------|--------------|---------|
+| close    | Triggers when the Dialog closes | — |
+| open     | Triggers when the dialog opens | — |
 
+## MessageBox
 
-**Alert.alert(msg[, options])** 不列队弹窗， 返回当前组件对象
+A messageBox mainly for alerting information, confirm operations.
 
-  + **msg** `string` 必须，消息内容
-  + **options** `object` 可选，配置对象
-
-
-**Alert.config(options)** 设置全局的默认配置
-
-
-## Confirm 对话框
+> MessageBox plugin base on Dialog component.
 
 ```js
-import { Confirm } from 'vue-m-dialog'
-
-Confirm('Are you sure ?')
-// ro
-Confirm.confirm('Are you sure ?')
+import { alert, confirm, createMessageBox, closeAll } from 'vue-m-dialog'
 ```
 
-**Confirm(msg[, options])** 对话框，并发多次调用会列队；返回 `Promise` 对象；确认会 `resolve`，取消会 `reject`；如果不需要列队请用 `Confirm.confirm`
+Interface of messageBox
 
-  + **msg** `string` 必须，消息内容
-  + **options** `object` 可选，配置对象
+```ts
+import { AppContext } from 'vue';
+export interface MessageBoxOptions {
+    title?: string;
+    message?: string | JSX.Element | (() => JSX.Element);
+    class?: string;
+    width?: string;
+    padding?: string;
+    top?: string;
+    zIndex?: string | number;
+    isMiddle?: boolean;
+    hideHeader?: boolean;
+    hasMask?: boolean;
+    draggable?: boolean;
+    isPointerEventsNone?: boolean;
+    showCancelButton?: boolean;
+    showConfirmButton?: boolean;
+    disableCancelButton?: boolean;
+    disableConfirmButton?: boolean;
+    cancelButtonText?: string;
+    confirmButtonText?: string;
+    beforeClose?: (cb: (ok: boolean) => void) => void;
+    onOpen?: () => void;
+    onRemove?: () => void;
+    [key: string]: any;
+}
+export declare function createMessageBox(options: MessageBoxOptions, context?: AppContext): Promise<{
+    action: string;
+    ok: boolean;
+}>;
+export declare const alert: (message: string, title?: string | undefined, options?: MessageBoxOptions | undefined, context?: AppContext | undefined) => Promise<{
+    action: string;
+    ok: boolean;
+}>;
+export declare const confirm: (message: string, title?: string | undefined, options?: MessageBoxOptions | undefined, context?: AppContext | undefined) => Promise<{
+    action: string;
+    ok: boolean;
+}>;
+export declare const closeAll: () => void;
+export declare const setDefaultOptions: (opts?: MessageBoxOptions | undefined) => void;
+```
 
-**Confirm.confirm(msg[, options])** 对话框不列队处理
+### LICENSE
 
-  + **msg** `string` 必须，消息内容
-  + **options** `object` 可选，配置对象
-
-**Confirm.config(options)** 设置全局默认配置
-
-
-
-**options** 配置对象如下:
-
-| 参数      | 说明          | 类型      | 可选值                           | 默认值  |
-|---------- |-------------- |---------- |--------------------------------  |-------- |
-| options.title | 显示标题 | string | — | 'Message' |
-| options.width | 提示框宽度 | string | — | '300px' |
-| options.iconType | 提示图标 | string | `info`, `warning`, `danger`, `success`, 'question | '' |
-| options.iconImg | 提示图标url | string | — | '' |
-| options.showClose | 是否显示关闭按钮 | boolean | true/false | true |
-| options.isMiddle | 是否居中 | boolean | true/false | true |
-| options.closeOnClickModal | 点击遮罩层是否关闭 | boolean | true/false | true |
-| options.closeOnPressEscape | 按下esc按钮是否关闭 | boolean | true/false | false |
-| options.controlButtonCenter | 控制按钮是否居中 | boolean | true/false | false |
-| options.confirmButtonText | 确认按钮文字 | string | —  | 'Confirm' |
-| options.cancelButtonText | 取消按钮文字 | string |  —   | 'Cancel' |
-| options.cancelButtonClassName | 取消按钮类名 | string |  —   | 'm-message-button--cancel' |
-| options.confirmButtonClassName | 确认按钮类名 | string |  —   | 'm-message-button--confirm' |
-| options.supportHTMLString | 是否支持html | boolean | true/false  | false |
-| options.callback | 关闭后回调 | function | —   | null |
-| options.fadeName | 弹窗动画过渡类名 | 'scale-fade', 'slide-fade' | 'slide-fade' |
+MIT [LICENSE](LICENSE)

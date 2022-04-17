@@ -15,5 +15,5 @@ jobs:
       env:
         ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
         BRANCH: gh-pages
-        FOLDER: docs # 部署文件夹内容
-        BUILD_SCRIPT: npm install && npm run build:docs
+        FOLDER: playground/dist # deploy folder
+        BUILD_SCRIPT: npm install && npm run build:playground
