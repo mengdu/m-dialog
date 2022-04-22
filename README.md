@@ -1,6 +1,8 @@
 
 ## Dialog
 
+[![NPM](https://nodei.co/npm/vue-m-dialog.png?compact=true)](https://nodei.co/npm/vue-m-dialog/)
+
 A Modal component for Vue 3.x.
 
 > Please use the [2.x](tree/v2.x) in Vue 2.x.
